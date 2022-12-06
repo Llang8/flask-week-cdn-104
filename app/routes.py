@@ -1,15 +1,6 @@
 from app import app
 from flask import render_template
 
-@app.route('/')
-def home():
-    return render_template('home.html')
-
-@app.route('/about')
-def about():
-    return render_template('about.html')
-
-
 user_data = { # Mock User table
     'dylans': {
         'user_id': 1,
@@ -37,6 +28,18 @@ user_data = { # Mock User table
     }
 }
 
+@app.route('/')
+def home():
+    return render_template('home.html')
+
+@app.route('/about')
+def about():
+    return render_template('about.html')
+
+@app.route('/profile/<username>')
+def display_profile(username):
+    return render_template('profile.html.j2', **user_data[username])
+    
 # Functions/Endpoints:
 # Get all users and their data
 # Get all user emails
@@ -106,6 +109,10 @@ car_data = {
         "selling_price": 158000
     }
 }
+
+# Create 2 routes/templates:
+# - Display all cars using a for loop and their information (not dynamic)
+# - Display a specific car and it's information (Will be dynamic, you can use the car's ID in the car_data dict)
 
 # Get all cars
 @app.route('/api/cars')
