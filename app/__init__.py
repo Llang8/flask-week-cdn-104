@@ -17,3 +17,5 @@ migrate.init_app(app, db)
 from app.blueprints.main import bp as main_bp
 app.register_blueprint(main_bp)
 
+from app.blueprints.blog import bp as blog_bp
+app.register_blueprint(blog_bp)

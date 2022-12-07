@@ -4,7 +4,7 @@
 
 {% block content %}
 <h1>Posts</h1>
-<form action="{{ url_for('create_post') }}" method="POST">
+<form action="{{ url_for('blog.create_post') }}" method="POST">
     <div class="mb-3">
         <label for="inputTitle" class="form-label">Title</label>
         <input type="text" class="form-control" id="inputTitle" name="inputTitle">
@@ -18,7 +18,7 @@
 {% for post in posts %}
     <div class="card">
         <div class="card-body">
-            <h5 class="card-title"><a href="{{ url_for('post_by_id', id=post.id) }}">{{ post.title }}</a></h5>
+            <h5 class="card-title"><a href="{{ url_for('blog.post_by_id', id=post.id) }}">{{ post.title }}</a></h5>
             {{ post.body }}
         </div>
         <div class="card-footer">
