@@ -2,14 +2,6 @@ from app import app, db
 from flask import render_template, request, redirect, url_for
 from app.models import Post
 
-@app.route('/')
-def home():
-    return render_template('home.html')
-
-@app.route('/about')
-def about():
-    return render_template('about.html')
-
 @app.route('/posts')
 def posts():
     all_posts = Post.query.all()
