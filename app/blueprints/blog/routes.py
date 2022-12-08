@@ -2,6 +2,7 @@ from . import bp as app
 from app import db
 from flask import render_template, request, redirect, url_for
 from .models import Post
+from flask_login import current_user
 
 @app.route('/posts')
 def posts():
@@ -19,7 +20,7 @@ def post_by_id(id):
 def create_post():
     title = request.form['inputTitle']
     body = request.form['inputBody']
-    new_post = Post(title=title, body=body, user_id=1)
+    new_post = Post(title=title, body=body, user_id=current_user.id)
     db.session.add(new_post)
     db.session.commit()
     return redirect(url_for('blog.posts'))
