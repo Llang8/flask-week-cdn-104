@@ -5,6 +5,7 @@
 {% block content %}
 <h1>Login</h1>
 <form action="{{ url_for('auth.login') }}" method="POST">
+    <input type="hidden" name="next" value="{{ request.args.get('next', '') }}">
     <div class="mb-3">
         <label for="email" class="form-label">Email address</label>
         <input type="email" class="form-control" id="email" name="email" aria-describedby="emailHelp">
