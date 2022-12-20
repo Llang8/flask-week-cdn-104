@@ -4,7 +4,7 @@ from app.blueprints.blog.models import Post
 from flask_cors import cross_origin
 
 @app.route('/posts')
-@cross_origin
+@cross_origin()
 def api_posts():
     result = []
 
@@ -20,7 +20,7 @@ def api_posts():
     return result
 
 @app.route('/post/<id>')
-@cross_origin
+@cross_origin()
 def api_post_by_id(id):
     post = Post.query.get(int(id))
 
